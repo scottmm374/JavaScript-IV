@@ -7,3 +7,111 @@ Prototype Refactor
 2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
 
 */
+
+class GameObject {
+  constructor(attributes) {
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
+  }
+
+  destroy() {
+    return `${this.name} was removed from the game.`;
+  }
+
+  takeDamage() {
+      return `${this.name} took damage.`;
+  }
+  
+  greet() {  
+    return `${this.name} offers a greeting in ${this.language}.`;
+  }
+};
+
+class CharacterStats extends GameObject {
+  constructor(attributes) {
+    super(attributes);
+    console.log(attributes);
+    this.healthPoints = attributes.healthPoints;
+  } 
+};
+
+
+class Humanoid extends GameObject {
+  constructor(attributes) {
+    super(attributes);
+    console.log(attributes);
+    this.team = attributes.team;
+    this.weapons = attributes.weapons;
+    this.language = attributes.language;
+  }
+};
+
+
+
+
+    const mage = new Humanoid({
+      createdAt: new Date(),
+      dimensions: {
+        length: 2,
+        width: 1,
+        height: 1,
+      },
+      healthPoints: 5,
+      name: 'Bruce',
+      team: 'Mage Guild',
+      weapons: [
+        'Staff of Shamalama',
+      ],
+      language: 'Common Tongue',
+    });
+  
+    const swordsman = new Humanoid({
+      createdAt: new Date(),
+      dimensions: {
+        length: 2,
+        width: 2,
+        height: 2,
+      },
+      healthPoints: 15,
+      name: 'Sir Mustachio',
+      team: 'The Round Table',
+      weapons: [
+        'Giant Sword',
+        'Shield',
+      ],
+      language: 'Common Tongue',
+    });
+  
+    const archer = new Humanoid({
+      createdAt: new Date(),
+      dimensions: {
+        length: 1,
+        width: 2,
+        height: 4,
+      },
+      healthPoints: 10,
+      name: 'Lilith',
+      team: 'Forest Kingdom',
+      weapons: [
+        'Bow',
+        'Dagger',
+      ],
+      language: 'Elvish',
+    });
+  
+  
+    
+  
+    console.log("Mage created at \n", mage.createdAt); // Today's date
+    console.log("archer dimensions \n ", archer.dimensions); // { length: 1, width: 2, height: 4 }
+    console.log("swordsman healthPoints \n", swordsman.healthPoints); // 15
+    console.log("mage name \n", mage.name); // Bruce
+    console.log("swordsman team \n", swordsman.team); // The Round Table
+    console.log("mage weapons \n", mage.weapons); // Staff of Shamalama
+    console.log("archer.language \n", archer.language); // Elvish
+    console.log("archer greet \n ", archer.greet()); // Lilith offers a greeting in Elvish.
+    console.log("mage take damage \n", mage.takeDamage()); // Bruce took damage.
+    console.log("swordsman destroy \n", swordsman.destroy()); // Sir Mustachio was removed from the game.
+  
+  
