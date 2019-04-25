@@ -18,32 +18,29 @@ class GameObject {
   destroy() {
     return `${this.name} was removed from the game.`;
   }
-
-  takeDamage() {
-      return `${this.name} took damage.`;
-  }
-  
-  greet() {  
-    return `${this.name} offers a greeting in ${this.language}.`;
-  }
 };
 
 class CharacterStats extends GameObject {
   constructor(attributes) {
     super(attributes);
-    console.log(attributes);
     this.healthPoints = attributes.healthPoints;
   } 
+
+  takeDamage() {
+    return `${this.name} took damage.`;
+  }
 };
 
 
-class Humanoid extends GameObject {
+class Humanoid extends CharacterStats {
   constructor(attributes) {
     super(attributes);
-    console.log(attributes);
     this.team = attributes.team;
     this.weapons = attributes.weapons;
     this.language = attributes.language;
+  }
+  greet() {  
+    return `${this.name} offers a greeting in ${this.language}.`;
   }
 };
 
@@ -114,4 +111,4 @@ class Humanoid extends GameObject {
     console.log("mage take damage \n", mage.takeDamage()); // Bruce took damage.
     console.log("swordsman destroy \n", swordsman.destroy()); // Sir Mustachio was removed from the game.
   
-  
+    
