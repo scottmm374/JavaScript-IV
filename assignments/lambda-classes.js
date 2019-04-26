@@ -23,11 +23,11 @@ class Instructor extends Person {
     }
 
     demo(subject) {
-        return `Today we are learning about ${this.subject}`;
+        return `Today we are learning about ${subject}`;
     }
 
     grade(student, subject) {
-        return `${this.student} recives a perfect score on ${this.subject}`;
+        return `${this.name} recives a perfect score on ${subject}`;
     }
 };
 
@@ -41,19 +41,19 @@ class Student extends Person {
     }
 
     listSubjects() {
-
-    }
+       return this.student.favSubjects;
+    };
 
     PRAssignment(subject) {
-        return `${this.name} has submitted a PR for ${subject}`;
+        return `${student.name} has submitted a PR for ${subject}`;
     }
 
-    sprintChallenge() {
-        return `${this.name} has begun sprint challenge on ${subject}`;
+    sprintChallenge(subject) {
+        return `${student.name} has begun sprint challenge on ${subject}`;
     }
 }
 
-class ProjectManager extends instructor {
+class ProjectManager extends Instructor {
     constructor(attributes) {
         super(attributes);
         this.gradClassName = attributes.gradClassName;
@@ -61,10 +61,10 @@ class ProjectManager extends instructor {
     }
 
     standUp(channel) {
-        return `${this.name} announces to ${channel}, @channel standup times!`;
+        return `${this.name} announces to ${this.channel}, @channel standy times!`;
     }
     
-    debugsCode() {
+    debugsCode(student, subject) {
         return `${this.name} debugs ${student.name}'s code on ${subject}`;
     }
 };
@@ -127,3 +127,7 @@ const emily= new ProjectManager ({
     gradClassName: "CS17",
     favInstructor: "Dan"
 });
+
+
+console.log(marie.speak());
+console.log(demo("Javascript"));
