@@ -27,7 +27,7 @@ class Instructor extends Person {
     }
 
     grade(student, subject) {
-        return `${this.name} recives a perfect score on ${subject}`;
+        return `${student.name} recives a perfect score on ${subject}`;
     }
 };
 
@@ -41,15 +41,17 @@ class Student extends Person {
     }
 
     listSubjects() {
-       return this.student.favSubjects;
+        for (let i = 0; i < this.favSubjects.length; i++) {
+            console.log(`${this.name} love's ${this.favSubjects[i]}`);
+          }
     };
 
     PRAssignment(subject) {
-        return `${student.name} has submitted a PR for ${subject}`;
+        return `${this.name} has submitted a PR for ${subject}`;
     }
 
     sprintChallenge(subject) {
-        return `${student.name} has begun sprint challenge on ${subject}`;
+        return `${this.name} has begun sprint challenge on ${subject}`;
     }
 }
 
@@ -61,7 +63,7 @@ class ProjectManager extends Instructor {
     }
 
     standUp(channel) {
-        return `${this.name} announces to ${this.channel}, @channel standy times!`;
+        return `${this.name} announces to ${channel}, @channel standy times!`;
     }
     
     debugsCode(student, subject) {
@@ -116,7 +118,10 @@ const ari= new ProjectManager ({
     location: "CA",
     gender: "M",
     gradClassName: "CS14",
-    favInstructor: "Josh"
+    favInstructor: "Josh",
+    favlanguage: "Jacascript",
+    specialty: "React",
+    catchPhrase: "I love JS!"
 });
 
 const emily= new ProjectManager ({
@@ -125,9 +130,26 @@ const emily= new ProjectManager ({
     location: "CA",
     gender: "F",
     gradClassName: "CS17",
-    favInstructor: "Dan"
+    favInstructor: "Dan",
+    favlanguage: "CSS",
+    specialty: "Flexbox",
+    catchPhrase: "I love Web Development!"
 });
 
 
-console.log(marie.speak());
-console.log(demo("Javascript"));
+console.log("Marie Speak \n", marie.speak());
+console.log("Emily Speak \n", emily.speak());
+console.log("Sara Demo \n", sara.demo("CSS"));
+console.log("Keiran Demo \n", kieran.demo("Javascript"));
+console.log("Ari Standup \n", ari.standUp("Slack"));
+console.log("sara grade \n", sara.grade(brian, "HTML"));
+console.log("Marie list Subjects \n", marie.listSubjects());
+
+console.log("Marie PRAassignment \n", marie.PRAssignment("callbacks"));
+console.log("Brian Sprint Challenge \n", brian.sprintChallenge("Great Idea Web Page"));
+
+
+console.log("Emily Debug \n ", emily.debugsCode(brian, "HTML"));
+console.log("Ari debug \n", ari.debugsCode(marie,"classes"));
+
+
